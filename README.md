@@ -221,3 +221,13 @@ _Procfile_
 ```
 guard: bundle exec guard
 ```
+
+# 参照
+
++ [RailsBricks入門](https://github.com/k2works/rails_bricks_introduction)
+
++ [RailsBricksのBDD仕様](https://github.com/k2works/rails_bricks_bdd)
+
++ [ビヘイビア駆動開発入門](https://github.com/k2works/bdd_introduction)
+
++ [Startbootstrap](http://startbootstrap.com/)
