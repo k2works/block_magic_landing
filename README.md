@@ -15,6 +15,7 @@
 
 + [Herokuにサインアップしている](https://id.heroku.com/signup/devcenter)
 + [Heroku Toolbeltをインストールしている](https://toolbelt.heroku.com/)
++ [LiveReloadをChromeにインストールしている](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
 
 # 構成
 + [環境セットアップ](#1)
@@ -128,4 +129,86 @@ end
 $ bundle
 $ rails g cucumber:install
 $ rake cucumber
+```
+#### Guardファイル追加
+```bash
+$ guard init cucumber
+```
+
+## <a name="">アプリケーションのデプロイ</a>
+### WebサーバーをUnicornに変更する
+#### Gemfile編集
+```ruby
+gem 'unicorn'
+```
+#### 設定ファイル作成
+```bash
+$ bundle
+$ touch config/unicorn.rb
+```
+_config/unicorn.rb_
+```ruby
+worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+timeout 15
+preload_app true
+
+before_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
+    Process.kill 'QUIT', Process.pid
+  end
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.connection.disconnect!
+end
+
+after_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
+  end
+
+  defined?(ActiveRecord::Base) and
+    ActiveRecord::Base.establish_connection
+end
+```
+### Heroku準備
+#### Procfileの作成
+_Procfile_
+```
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+```
+#### .envファイルの追加
+```bash
+$ echo "RACK_ENV=development" >>.env
+$ echo "PORT=3000" >> .env
+$ echo ".env" >> .gitignore
+```
+
+#### foreman実行
+```bash
+$ gem install foreman
+$ foreman start
+```
+
+### Herokuへデプロイ
+```bash
+$ heroku login
+$ heroku create --addons heroku-postgresql
+$ git push heroku master
+
+### Herokuデーターベースマイグレーション
+```bash
+$ heroku run rake db:migrate
+$ heroku run rake db:seed
+```
+
+### Herokuアプリケーションの確認
+```bash
+$ heroku ps:scale web=1
+$ heroku ps
+$ heroku open
+```
+### Herokuアプリケーションの名前変更
+```bash
+$ heroku apps:rename mvp-smoke-tester
 ```
