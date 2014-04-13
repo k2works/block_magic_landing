@@ -50,9 +50,25 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 # RSpec
 group :test, :development do
   gem "rspec-rails", '~> 2.14.1'
+  gem "guard-rspec"
+  gem "factory_girl_rails"
+  gem "spring"
+  gem "guard-livereload", require: false
+  gem "spring-commands-rspec"
 end
 
 # Capybara
 group :test do
   gem "capybara", '~> 2.2.1'
+  gem "launchy"
 end
+
+# Cucumber
+group :test do
+  gem "cucumber-rails", require: false
+  gem "database_cleaner"
+  gem "guard-cucumber"
+end
+
+# i18n
+gem 'i18n_generators'
