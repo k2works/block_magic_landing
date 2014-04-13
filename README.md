@@ -21,6 +21,7 @@
 + [環境セットアップ](#1)
 + [アプリケーションのセットアップ](#2)
 + [アプリケーションのデプロイ](#3)
++ [その他追加設定](#4)
 
 # 詳細
 
@@ -211,4 +212,12 @@ $ heroku open
 ### Herokuアプリケーションの名前変更
 ```bash
 $ heroku apps:rename mvp-smoke-tester
+```
+
+## <a name="4">その他追加設定</a>
+
+### Guardもforemanから呼び出すように変更
+_Procfile_
+```
+guard: bundle exec guard
 ```
