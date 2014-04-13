@@ -72,6 +72,5 @@ end
 
 # i18n
 gem 'i18n_generators'
-
 # Unicorn
 gem 'unicorn'
