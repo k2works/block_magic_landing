@@ -1,20 +1,20 @@
 <div class="row">
   <div class="col-sm-6 ">
-    <h1>Sign in</h1>
+    <h1>ログイン</h1>
 
-    <%= form_for(resource, :as => resource_name, 
+    <%= form_for(resource, :as => resource_name,
     :url => session_path(resource_name),
     role: "form") do |f| %>
-  
+
       <div class="form-group">
         <%= f.label :username %>
         <div class="row">
           <div class="col-sm-6">
-            <%= f.text_field :username, :autofocus => true, class: "form-control" %>  
+            <%= f.text_field :username, :autofocus => true, class: "form-control" %>
           </div>
         </div>
       </div>
-      
+
       <div class="form-group">
         <%= f.label :password %>
         <div class="row">
@@ -23,8 +23,8 @@
           </div>
         </div>
       </div>
-  
-      
+
+
 
       <% if devise_mapping.rememberable? -%>
       <div class="checkbox">
@@ -34,7 +34,7 @@
 
       <div class="row">
         <div class="col-sm-6">
-          <%= f.submit "Sign in", class: "btn btn-primary" %>
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
         </div>
       </div>
       <% end %>

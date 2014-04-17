@@ -222,6 +222,31 @@ _Procfile_
 guard: bundle exec guard
 ```
 
+### 日本語対応
+#### メニューの日本語対応
+
+_app/views/layouts/_navigation_links.html.erb_を編集
+
+#### Deviseの日本語対応
+
+[devise.ja.yml](https://gist.github.com/yhara/606476)を_config/locales_に保存する。
+
+_app/views/devise/_以下のファイルを編集する。
+
++ ログイン画面
+  + _app/views/devise/sessions/new.html.erb_
+  + _app/views/devise/shard/_links.erb_
+
++ アカウント編集画面
+  + _app/views/devise/registrations/edit.html.erb_
+
++ 管理者画面
+  + _app/views/admin/base/index.html.erb_
+
++ ユーザー画面
+  + _app/views/admin/users/index.html.erb_
+  + _app/views/admin/users/edit.html.erb_
+
 # 参照
 
 + [RailsBricks入門](https://github.com/k2works/rails_bricks_introduction)
