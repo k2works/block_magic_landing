@@ -322,11 +322,14 @@ $(document).on 'page:change', ->
 ```
 
 #### デプロイ
-
-Figaroでアプリケーションのキー情報をherokuの環境変数に登録。
+ここまでの作業をコミットした後Figaroでアプリケーションのキー情報をherokuの環境変数に登録。
 
 ```bash
-rake figaro:heroku['mvp-smoke-tester']
+$ rake figaro:heroku['mvp-smoke-tester']
+```
+Herokuへデプロイ
+```bash
+$ git push heroku master
 ```
 
 
