@@ -281,6 +281,55 @@ _app/views/devise/_以下のファイルを編集する。
   + _app/views/admin/users/index.html.erb_
   + _app/views/admin/users/edit.html.erb_
 
+### Google Analytics対応
+
+#### トラッキングIDの設定
+_app/config/application.yml_を作成してトラッキングIDとトラッキングドメインを明記する
+```bash
+$ rails g figaro:install
+```
+_application.yml_
+```yml
+google_analytics_key: "UA-XXXXXXX-XX"
+google_analytics_domain: "herokuapp.com"
+```
+事前にトラッキングIDをGoogleAnlyticsで設定しおく。  
+application.ymlはレポジトリ管理対象にはならないのでローカル環境のみで管理する。
+
+#### パーシャル追加
+_app/views/layouts/_footer.html.erb_に以下のコードを追加
+```html
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '<%= ENV["google_analytics_key"]%>', '<%= ENV["google_analytics_domain"]%>');  
+  ga('send', 'pageview');
+
+</script>
+```
+
+#### Turbolinks対応
+_app/assets/javascripts/analytics.js.coffee_を追加する
+```coffee
+$(document).on 'page:change', ->
+  if window._gaq?
+    _gaq.push ['_trackPageview']
+  else if window.pageTracker?
+    pageTracker._trackPageview()
+```
+
+#### デプロイ
+
+Figaroでアプリケーションのキー情報をherokuの環境変数に登録。
+
+```bash
+rake figaro:heroku['mvp-smoke-tester']
+```
+
+
 # 参照
 
 + [RailsBricks入門](https://github.com/k2works/rails_bricks_introduction)
@@ -290,3 +339,7 @@ _app/views/devise/_以下のファイルを編集する。
 + [ビヘイビア駆動開発入門](https://github.com/k2works/bdd_introduction)
 
 + [Startbootstrap](http://startbootstrap.com/)
+
++ [Analytics for Rails](http://railsapps.github.io/rails-google-analytics.html)
+
++ [laserlemon/figaro](https://github.com/laserlemon/figaro#deployment)
