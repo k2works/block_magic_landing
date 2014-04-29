@@ -329,7 +329,10 @@ $ rake figaro:heroku['mvp-smoke-tester']
 ```
 Herokuへデプロイ
 ```bash
-$ git push heroku master
+$ RAILS_ENV=production rake assets:precompile
+$ git add -a
+$ git commit -m "assets compiled for Heroku"
+$ git push -f heroku master
 ```
 
 
