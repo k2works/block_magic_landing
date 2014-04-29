@@ -136,6 +136,40 @@ $ rake cucumber
 $ guard init cucumber
 ```
 
+### ドキュメント環境構築
+
+以下のGemを追加してbundle実行
+
+```Ruby
+# Yard
+group :test, :development do
+  gem 'yard', :require => false
+  gem 'yard-cucumber', :require => false
+  gem 'redcarpet'
+  gem 'guard-yard'
+  gem 'yard-rails-plugin', :git => 'https://github.com/ogeidix/yard-rails-plugin.git', :tag => 'v0.0.1'
+  gem 'guard-ctags-bundler'
+end
+```
+
+#### .yardoptsの追加
+```
+--charset UTF-8
+"{lib,app,features}/**/*.{rb,feature}" --plugin yard-cucumber
+```
+
+#### Guardファイル追加
+```
+$ guard init yard
+```
+
+#### Yardの確認
+```
+$ guard
+$ open http://localhost:8808
+```
+
+
 ## <a name="">アプリケーションのデプロイ</a>
 ### WebサーバーをUnicornに変更する
 #### Gemfile編集

@@ -1,5 +1,20 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
+guard 'livereload' do
+  watch(%r{app/views/.+\.(erb|haml|slim)$})
+  watch(%r{app/helpers/.+\.rb})
+  watch(%r{public/.+\.(css|js|html)})
+  watch(%r{config/locales/.+\.yml})
+  # Rails Assets Pipeline
+  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+end
+
+guard 'yard' do
+  watch(%r{app/.+\.rb})
+  watch(%r{lib/.+\.rb})
+  watch(%r{ext/.+\.c})
+end
+
 
 guard :rspec, cmd: 'spring rspec -f doc' do
   watch(%r{^spec/.+_spec\.rb$})
@@ -20,16 +35,6 @@ guard :rspec, cmd: 'spring rspec -f doc' do
   # Turnip features and steps
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
-end
-
-
-guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)$})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-  # Rails Assets Pipeline
-  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
 end
 
 guard 'cucumber' do

@@ -29,3 +29,6 @@ doc/
 /config/application.yml
 .secret
 .env
+
+.yardoc/
+tags
