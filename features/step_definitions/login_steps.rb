@@ -1,8 +1,6 @@
 前提(/^"(.*?)"の登録が完了している$/) do |user|
   if user == "admin"
-    user = FactoryGirl.build(:user)
-    user.skip_confirmation!
-    user.save!
+    create_admin_user
   end
 end
 
@@ -14,6 +12,6 @@ end
   click_button('ログイン')
 end
 
-ならば(/^管理画面に移動して"(.*?)"と表示される$/) do |message|
+ならば(/^画面に"(.*?)"と表示される$/) do |message|
   expect(page).to have_content message
 end
