@@ -4,7 +4,7 @@
   end
 end
 
-もし(/^"(.*?)"が"(.*?)"を使ってログインしたら$/) do |user, pass|
+もし(/^"(.*?)"が"(.*?)"を使ってログインした$/) do |user, pass|
   visit '/'
   click_link 'ログイン'
   fill_in 'ユーザー名', with: user
