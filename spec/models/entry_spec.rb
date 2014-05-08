@@ -25,7 +25,7 @@ describe Entry do
 
   describe "when email format is invalid" do
     it "should be invalid" do
-      addresses = %w[user_at_foo,org example.user@foo.foo@bar_baz.com foo@bar+baz.com]                    
+      addresses = %w[user_at_foo,org example.user@foo.foo@bar_baz.com foo@bar+baz.com]
       addresses.each do |invalid_address|
         @entry.email = invalid_address
         should_not be_valid
@@ -40,6 +40,16 @@ describe Entry do
         @entry.email = valid_address
         should be_valid
       end
+    end
+  end
+
+  describe "email address with mixed case" do
+    let(:mixed_case_email) { "Foo@ExAMPle.CoM"}
+
+    it "should be saved as all lower-case" do
+      @entry.email = mixed_case_email
+      @entry.save
+      expect(@entry.reload.email).to eq mixed_case_email.downcase
     end
   end
 end
