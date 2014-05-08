@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/LeanEC/mvp_smoke_tester.svg?branch=master)](https://travis-ci.org/LeanEC/mvp_smoke_tester)
 [![Stories in Ready](https://badge.waffle.io/leanec/mvp_smoke_tester.png?label=ready&title=Ready)](https://waffle.io/leanec/mvp_smoke_tester)
 スモークテスト支援ツール
 ===================
