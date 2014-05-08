@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/leanec/mvp_smoke_tester.png?label=ready&title=Ready)](https://waffle.io/leanec/mvp_smoke_tester)
 スモークテスト支援ツール
 ===================
 
