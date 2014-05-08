@@ -82,5 +82,11 @@ end
 
 # i18n
 gem 'i18n_generators'
+
 # Unicorn
 gem 'unicorn'
+
+# Annotation
+group :development do
+  gem 'annotate', '2.5.0'
+end

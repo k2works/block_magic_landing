@@ -106,10 +106,10 @@
                     <h2>Connect to Start Bootstrap:</h2>
                 </div>
                 <div class="col-lg-6">
-                  <form class="navbar-form pull-left">
-                    <input autofocus="autofocus" class="form-control" id="mail" name="entry[mail]" type="text" value="" />
-                    <button type="submit" class="btn">お知らせ登録</button>
-                  </form>
+                  <%= form_for :entry,url: entry_path,:html => {:class => 'navbar-form pull-left'} do |f| %>
+                    <%= f.text_field :email, class: "form-control" %>
+                    <%= f.submit "お知らせ登録", class: "btn" %>
+                  <% end %>
                 </div>
             </div>
 

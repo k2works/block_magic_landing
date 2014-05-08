@@ -335,6 +335,19 @@ $ git commit -m "assets compiled for Heroku"
 $ git push -f heroku master
 ```
 
+### データベースアノテーション
+_Gemfile_に以下を追加
+```ruby
+group :development do
+  gem 'annotate', '2.5.0'
+end
+```
+アノテーション実行
+```bash
+$ bundle install
+$ bundle exec annotate
+```
+※dbスキーマに変更がある度にbundle exec annotateする必要がある
 
 # 参照
 
