@@ -12,10 +12,18 @@
 
     例: 訪問ユーザーがお知らせ登録をする
      | 訪問ユーザー | メールアドレス | メッセージ |
-     | visitor    | visitor@hoge.com | 登録ありがとうございます。 |
-     | visitor    | InvalidMailAddress | メールアドレスが正しくありません。 |
+     | visitor    | entry@hoge.com | 登録ありがとうございます。 |
+     | visitor    | | Emailを入力してください。 |
+     | visitor    | InvalidMailAddress | Emailは不正な値です。 |
 
-    例: 訪問ユーザー以外がお知らせを登録する
-     | 訪問ユーザー | メールアドレス | メッセージ |
-     | admin    | admin@hoge.com | 登録済みユーザーです。 |
-     | admin    | InvalidMailAddress | 登録済みユーザーです。 |
+  シナリオアウトライン: お知らせ登録をする
+    前提 "<登録済みユーザー>"である
+    もし "<登録済みユーザー>"が"<メールアドレス>"を登録した
+    ならば 画面に"<メッセージ>"と表示される
+
+    例: 登録済みユーザーがお知らせを登録する
+     | 登録済みユーザー | メールアドレス | メッセージ |
+     | entry    | entry@hoge.com | Emailはすでに存在します。 |
+     | entry    | other_entry@hoge.com | 登録ありがとうございます。 |
+     | entry    | | Emailを入力してください。 |
+     | entry    | InvalidMailAddress | Emailは不正な値です。 |

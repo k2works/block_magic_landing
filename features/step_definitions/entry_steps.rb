@@ -1,6 +1,9 @@
 前提(/^"(.*?)"である$/) do |user|
-  if user == "admin"
+  case user
+  when "admin"
     create_admin_user
+  when "entry"
+    create_entry_user
   end
 end
 
