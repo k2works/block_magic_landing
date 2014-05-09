@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/LeanEC/mvp_smoke_tester.svg?branch=master)](https://travis-ci.org/LeanEC/mvp_smoke_tester)
 [![Code Climate](https://codeclimate.com/github/LeanEC/mvp_smoke_tester.png)](https://codeclimate.com/github/LeanEC/mvp_smoke_tester)
 [![Stories in Ready](https://badge.waffle.io/leanec/mvp_smoke_tester.png?label=ready&title=Ready)](https://waffle.io/leanec/mvp_smoke_tester)
+[![Gitter chat](https://badges.gitter.im/LeanEC.png)](https://gitter.im/LeanEC)
 スモークテスト支援ツール
 ===================
 
