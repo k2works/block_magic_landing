@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/LeanEC/mvp_smoke_tester.svg?branch=master)](https://travis-ci.org/LeanEC/mvp_smoke_tester)
+[![Code Climate](https://codeclimate.com/github/LeanEC/mvp_smoke_tester.png)](https://codeclimate.com/github/LeanEC/mvp_smoke_tester)
 [![Stories in Ready](https://badge.waffle.io/leanec/mvp_smoke_tester.png?label=ready&title=Ready)](https://waffle.io/leanec/mvp_smoke_tester)
 スモークテスト支援ツール
 ===================
@@ -350,6 +351,33 @@ $ bundle install
 $ bundle exec annotate
 ```
 ※dbスキーマに変更がある度にbundle exec annotateする必要がある
+
+### Codeclimate対応
+
+#### コードチェックの登録
+https://codeclimate.com/にログインする。  
+ダッシュボード画面の_Add Open Source Repo_からレポジトリを追加する。
+
+#### コードカバレッジの登録
+
+_Gemfile_に追加する。
+
+```ruby
+gem "codeclimate-test-reporter", group: :test, require: nil
+```
+
+_spec/spec_helper_の先頭に以下のコードを追加する。
+```ruby
+require "codeclimate-test-reporter"
+ CodeClimate::TestReporter.start
+```
+
+_.travis.yml_に以下のコードを追加する。repo_tokenはCodeclimate管理画面の_Settings_メニューのTest Coverageに明記されている。
+```yml
+ addons:
+   code_climate:
+     repo_token: 1213....
+```
 
 # 参照
 

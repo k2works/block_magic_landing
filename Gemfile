@@ -90,3 +90,6 @@ gem 'unicorn'
 group :development do
   gem 'annotate', '2.5.0'
 end
+
+# Codeclimate
+gem "codeclimate-test-reporter", group: :test, require: nil
