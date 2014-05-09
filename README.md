@@ -379,6 +379,12 @@ _.travis.yml_に以下のコードを追加する。repo_tokenはCodeclimate管�
      repo_token: 1213....
 ```
 
+更新を反映
+```bash
+$ bundle
+$ git push origin master
+```
+
 # 参照
 
 + [RailsBricks入門](https://github.com/k2works/rails_bricks_introduction)
@@ -392,3 +398,5 @@ _.travis.yml_に以下のコードを追加する。repo_tokenはCodeclimate管�
 + [Analytics for Rails](http://railsapps.github.io/rails-google-analytics.html)
 
 + [laserlemon/figaro](https://github.com/laserlemon/figaro#deployment)
+
++ [Improve Your Code Quality: Tracking Test Coverage with Travis CI and Code Climate](http://blog.travis-ci.com/2013-09-12-improve-your-codes-quality-tracking-test-coverage-with-travis-ci-and-code-climate/)
