@@ -18,13 +18,13 @@ describe Entry do
   it { should respond_to(:email) }
   it { should be_valid }
 
-  describe "when email is not present" do
+  describe "Eメールが存在しない場合" do
     before { @entry.email = "" }
     it { should_not be_valid }
   end
 
-  describe "when email format is invalid" do
-    it "should be invalid" do
+  describe "Eメールフォーマットが不正な場合" do
+    it "エラーになる" do
       addresses = %w[user_at_foo,org example.user@foo.foo@bar_baz.com foo@bar+baz.com]
       addresses.each do |invalid_address|
         @entry.email = invalid_address
@@ -33,8 +33,8 @@ describe Entry do
     end
   end
 
-  describe "when email format is valid" do
-    it "should be valid" do
+  describe "Eメールフォーマットが正しい場合" do
+    it "正常" do
       addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
       addresses.each do |valid_address|
         @entry.email = valid_address
@@ -43,10 +43,10 @@ describe Entry do
     end
   end
 
-  describe "email address with mixed case" do
+  describe "Eメールアドレスが大文字小文字混在の場合" do
     let(:mixed_case_email) { "Foo@ExAMPle.CoM"}
 
-    it "should be saved as all lower-case" do
+    it "全て小文字で保存される" do
       @entry.email = mixed_case_email
       @entry.save
       expect(@entry.reload.email).to eq mixed_case_email.downcase
