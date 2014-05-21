@@ -386,6 +386,9 @@ $ bundle
 $ git push origin master
 ```
 
+#### デバッグ環境セットアップ
+[Rails4 今のところ最強なデバッグツール達](http://qiita.com/yusabana/items/8ce54577d959bb085b37)参照
+
 # 参照
 
 + [RailsBricks入門](https://github.com/k2works/rails_bricks_introduction)
